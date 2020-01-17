@@ -1,6 +1,6 @@
 # Trust Region-Guided Proximal Policy Optimization
 
-Source code for the paper: [Truly Proximal Policy Optmization (TRGPPO)](https://arxiv.org/abs/1901.10314). The original code was forked from [OpenAI baselines](https://github.com/openai/baselines).
+Source code for the paper: [Truly Proximal Policy Optmization](https://arxiv.org/abs/1903.07940). The original code was forked from [OpenAI baselines](https://github.com/openai/baselines).
 
 Method is tested on [MuJoCo](http://www.mujoco.org/) continuous control tasks and [Atari](https://www.atari.com/) discrete game tasks in [OpenAI gym](https://github.com/openai/gym).
 Networks are trained using [tensorflow1.10](https://www.tensorflow.org/) and Python 3.6.
