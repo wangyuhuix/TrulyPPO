@@ -36,6 +36,6 @@ You can try `--alg=pporb` for PPO-RB and `--alg-trppo` for TR-PPO.
 ### Discrete Task
 
 ```
-python -m baselines.ppo2_AdaClip.run alg=trulyppo --env=BeamRiderNoFrameskip-v4 --seed=0 --isatari
+python -m baselines.ppo2_AdaClip.run --alg=trulyppo --env=BeamRiderNoFrameskip-v4 --seed=0 --isatari
 ```
 
