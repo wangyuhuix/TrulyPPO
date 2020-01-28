@@ -1,4 +1,4 @@
-# Trust Region-Guided Proximal Policy Optimization
+# Truly Proximal Policy Optimization
 
 Source code for the paper: [Truly Proximal Policy Optmization](https://arxiv.org/abs/1903.07940). The original code was forked from [OpenAI baselines](https://github.com/openai/baselines).
 
