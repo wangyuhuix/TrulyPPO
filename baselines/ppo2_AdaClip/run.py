@@ -140,7 +140,10 @@ def arg_parser_common():
 
                     a2c=dict(clipargs=dict(cliprange=0.1)),
 
-                    kl=dict(clipargs=dict(klrange=0.001, cliprange=0.1, decay_threshold=0.)),
+                    kl=dict(
+                        clipargs=dict(klrange=0.001, cliprange=0.1, decay_threshold=0.),
+                        coef_entropy = 0
+                    ),
                     kl_ratiorollback=dict(clipargs=dict(klrange=0.001,slope_rollback=-0.05, cliprange=0.1, decay_threshold=0.)),
                     kl_klrollback_constant=dict(clipargs=dict(klrange=0.001, slope_rollback=-0.05, cliprange=0.1, decay_threshold=0.)),
                     kl_klrollback_constant_withratio= dict(
@@ -153,7 +156,8 @@ def arg_parser_common():
                         clipargs=dict(range=0.02, slope_rollback=-0.05, cliprange=0.1, decay_threshold=0.)
                     ),
                     kl2clip=dict(
-                        clipargs=dict(klrange=0.001, cliprange=0.1, kl2clip_opttype='tabular', adaptive_range='')
+                        clipargs=dict(klrange=0.001, cliprange=0.1, kl2clip_opttype='tabular', adaptive_range=''),
+                        coef_entropy=0
                     ),
                     adaptivekl=dict(
                         clipargs=dict(klrange=0.01, cliprange=0.1)
@@ -236,7 +240,7 @@ def main():
             args.env_full = f'{args.env}-v4'
     tools.warn_(f'Run with setting for {args.envtype} task!!!!!')
 
-    assert bool(args.alg) != bool(args.cliptype), 'Only one arg can be specified'
+    assert bool(args.alg) != bool(args.cliptype), 'Either alg or cliptype should be specified'
     if args.alg: # For release
         args.cliptype = alg2cliptype[args.alg]
         keys_exclude.append('cliptype')
@@ -297,7 +301,7 @@ def main():
     # TODO prepare_dir: change .finish_indicator to finishi_indictator, which is more clear.
     # --- prepare dir
     import baselines
-    root_dir = tools_logger.get_logger_dir(  'baselines', baselines, 'results' )
+    root_dir = tools_logger.get_logger_dir(  'baselines', 'results', baselines )
     args = tools_logger.prepare_dirs( args, key_first='env', keys_exclude=keys_exclude, dirs_type=['log' ], root_dir=root_dir )
     # --- prepare args for use
     args.cliptype = ClipType[ args.cliptype ]
